@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h3>Gimnasios</h3>
+  <a href="{% url 'gimnasio_crear' %}" class="btn btn-success">
+    <i class="bi bi-plus-circle"></i> Nuevo gimnasio
+  </a>
+</div>
+
+<div class="row g-4">
+  {% for g in gimnasios %}
+  <div class="col-md-4 col-lg-3">
+    <div class="card tarjeta h-100">
+      <div class="card-body">
+        <h5 class="card-title">Líder: {{ g.lider }}</h5>
+        <span class="badge bg-danger">{{ g.get_naturaleza_display }}</span>
+        <p class="mb-1 mt-2"><b>Entrenadores con medalla:</b> {{ g.entrenadores.count }}</p>
+      </div>
+      <div class="card-footer d-flex gap-2">
+        <a href="{% url 'gimnasio_editar' g.id %}" class="btn btn-sm btn-primary">
+          <i class="bi bi-pencil"></i> Editar
+        </a>
+        <a href="{% url 'gimnasio_eliminar' g.id %}" class="btn btn-sm btn-outline-danger">
+          <i class="bi bi-trash"></i> Eliminar
+        </a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p class="text-center">No hay gimnasios registrados.</p>
+  {% endfor %}
+</div>
+{% endblock %}

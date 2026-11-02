@@ -1,0 +1,23 @@
+body {
+  background: linear-gradient(160deg, #1b1f3b, #3a1c71);
+  min-height: 100vh;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  color: #fff;
+}
+.barra { background: #ee1515; border-bottom: 5px solid #ffcb05; }
+.logo { font-family: 'Press Start 2P', monospace; font-size: 16px; color: #fff; }
+.tarjeta {
+  background: #fff; color: #222;
+  border: 4px solid #ffcb05; border-radius: 16px;
+  transition: transform .2s, box-shadow .2s;
+}
+.tarjeta:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 0 20px #ffcb05; }
+.tarjeta img { height: 180px; object-fit: contain; background: #eef; padding: 8px; }
+.tarjeta .card-title { font-size: 13px; }
+.formulario {
+  background: #fff; color: #222; padding: 25px;
+  border: 4px solid #ffcb05; border-radius: 16px;
+}
+.formulario input, .formulario select, .formulario textarea { width: 100%; margin-bottom: 8px; }
+.btn { font-family: 'Press Start 2P', monospace; font-size: 10px; }

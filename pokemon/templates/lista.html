@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row g-4">
+  {% for p in pokemones %}
+  <div class="col-md-4 col-lg-3">
+    <div class="card tarjeta h-100">
+      {% if p.imagen %}
+        <img src="{{ p.imagen.url }}" class="card-img-top" alt="{{ p.nombre }}">
+      {% endif %}
+      <div class="card-body">
+        <h5 class="card-title">{{ p.nombre }}</h5>
+        <span class="badge bg-danger">{{ p.get_naturaleza_display }}</span>
+        <p class="mb-1 mt-2"><b>Peso:</b> {{ p.peso }} kg</p>
+        <p class="mb-1"><b>Entrenador:</b> {{ p.entrenador|default:"Sin entrenador" }}</p>
+        <p class="mb-1"><b>Habilidades:</b> {{ p.habilidades }}</p>
+        <p class="small text-muted">{{ p.descripcion }}</p>
+      </div>
+      <div class="card-footer d-flex gap-2">
+        <a href="{% url 'pokemon_editar' p.id %}" class="btn btn-sm btn-primary">
+          <i class="bi bi-pencil"></i> Editar
+        </a>
+        <a href="{% url 'pokemon_eliminar' p.id %}" class="btn btn-sm btn-outline-danger">
+          <i class="bi bi-trash"></i> Eliminar
+        </a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p class="text-center">No hay pokémones registrados.</p>
+  {% endfor %}
+</div>
+{% endblock %}
